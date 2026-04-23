@@ -11,6 +11,7 @@
 #include "GPIO.h"
 
 GPIO_TypeDef* gpio[size]; 
+
 /**
  * @brief Initializes the GPIO subsystem
  * 
@@ -18,7 +19,6 @@ GPIO_TypeDef* gpio[size];
  * 
  * @return No return value
  */
-
 
 void gpio_init()
 {
@@ -210,6 +210,18 @@ uint8_t gpio_readPin(port_t p, uint8_t pin)
     }
 }
 
+/**
+ * @brief Configures the alternate function of a GPIO pin
+ * 
+ * This function assigns an alternate function (AF) to a specific GPIO pin.
+ * Alternate functions allow pins to be used by peripherals such as timers,
+ * UART, SPI, I2C, etc.
+ * 
+ * @param p GPIO port identifier
+ * @param pin Pin number (0 to 15)
+ * @param alternate_mode Alternate function number (0 to 15)
+ * @return No return value
+ */
 
 void gpio_setAlternateFunction(port_t p, uint8_t pin, uint8_t alternate_mode)
 {

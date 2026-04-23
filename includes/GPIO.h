@@ -26,107 +26,102 @@ typedef enum port
  }port_t; 
 
 extern GPIO_TypeDef* gpio[size];
-/*
- 
-    Description: initializes de GPIO subsytem
-    Functional Requirements: 
-        FR-1: The system shall configure all GPIO ports to a default state. 
- 
-    Inicializar una variable para trabajar todos los GPIOs
+
+/**
+ * @brief Initializes the GPIO subsystem
+ * 
+ * This function shall configure all GPIO ports to a default state. 
+ * 
+ * @return No return value
  */
 
 void gpio_init(); 
 
-
-
-/*
- 
-    Description: Initializes a specifit GPIO port
-    Functional Requirements: 
-        FR-2: The system shall enable clockinf for the specified port 
- 
-        Inicializar un puerto (GPIO) en especifico, iniciar su reloj 
-
-    La funcion debera recibir un numero de entrada que sera interpretado por el ENUM
-    Este le indicara al array gpio que GPIO del STM32 se quiere trabajar
+ /**
+ * @brief Initializes a specific GPIO port
+ * 
+ * This function shall enable clocking for the specified port 
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @return No return value
  */
 
 void gpio_initPort(port_t p); 
 
-
- 
-/*
-    Description: Configures the mode of a specific pin.
-    Functional Requirements: 
-        FR-3: The system shall allow configuration of pin direction and mode. 
-
-    La funcion recibe los siguientes parametros: 
-
-    1. Un numero que sera interpretado por el ENUM como el GPIOx que se quiere trabajar
-    2. Un unsigned int que indicara que pin dentro del GPIO se quiere modificar
-    3. Un unsinged int que indicara que modo se le asignara al pin del GPIOx 
+ /**
+ * @brief Configures the mode of a specific pin.
+ * 
+ * This function shall allow configuration of pin direction and mode.
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @param pin unsigned int indicating which pin within the GPIO to modify
+ * @param mode unsigned int indicating which mode to assign to the GPIOx pin
+ * @return No return value
  */
 
 void gpio_setPinMode(port_t p, uint8_t pin, uint8_t mode);
 
-
-
-/*
-    Description: Sets a pin to logic high.
-    Functional Requirements: 
-        FR-4: The system shall drive the specified pin to a high state.
-
-    La funcion recibe los siguientes parametros> 
-    1. Un numero que sera interpretado por el ENUM como el GPIOx que se quiere trabajar
-    2. Un unsigned int que indicara que pin dentro del GPIO se quiere modificar
+ /**
+ * @brief Sets a pin to logic HIGH.
+ * 
+ * This function shall drive the specified pin to a high state.
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @param pin unsigned int indicating which pin within the GPIO to modify
+ * @return No return value
  */
 
 void gpio_setPin(port_t p, uint8_t pin);
 
-
-
-/*
- 
-    Description: Clears a pin to logic low.
-    Functional Requirements: 
-        FR-5: The system shall drive the specified pin to a low state.
-    
-    La funcion recibe los siguientes parametros> 
-    1. Un numero que sera interpretado por el ENUM como el GPIOx que se quiere trabajar
-    2. Un unsigned int que indicara que pin dentro del GPIO se quiere modificar
+ /**
+ * @brief Clears a pin to logic LOW.
+ * 
+ * This function shall drive the specified pin to a low state.
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @param pin unsigned int indicating which pin within the GPIO to modify
+ * @return No return value
  */
 
 void gpio_clearPin(port_t p, uint8_t pin);
 
-
-
-/*
- 
-    Description: Toggles the state of a pin.
-    Functional Requirements: 
-        FR-6: The system shall invert the current state of the specified pin.
-    La funcion recibe los siguientes parametros> 
-        1. Un numero que sera interpretado por el ENUM como el GPIOx que se quiere trabajar
-        2. Un unsigned int que indicara que pin dentro del GPIO se quiere modificar
+ /**
+ * @brief Toggles the state of a pin.
+ * 
+ * This function shall invert the current state of the specified pin.
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @param pin unsigned int indicating which pin within the GPIO to modify
+ * @return No return value
  */
 
 void gpio_togglePin(port_t p, uint8_t pin);
 
-
-
-/*
- 
-    Description: Reads the current state of a pin.
-    Functional Requirements: 
-        FR-7: The system shall return the digital state of the specified pin.
-    La funcion recibe los siguientes parametros> 
-        1. Un numero que sera interpretado por el ENUM como el GPIOx que se quiere trabajar
-        2. Un unsigned int que indicara que pin dentro del GPIO se quiere modificar
- */
+ /**
+ * @brief Reads the current state of a pin.
+ * 
+ * This function shall return the digital state of the specified pin.
+ * 
+ * @param p The letter or number of the GPIO port that is going to be initialized
+ * @param pin unsigned int indicating which pin within the GPIO to modify
+ * @return The state of the pin (HIGH or LOW)
+ */ 
 
 uint8_t gpio_readPin(port_t p, uint8_t pin);
 
+/**
+ * @brief Configures the alternate function of a GPIO pin
+ * 
+ * This function assigns an alternate function (AF) to a specific GPIO pin.
+ * Alternate functions allow pins to be used by peripherals such as timers,
+ * UART, SPI, I2C, etc.
+ * 
+ * @param p GPIO port identifier
+ * @param pin Pin number (0 to 15)
+ * @param alternate_mode Alternate function number (0 to 15)
+ * @return No return value
+ */
 
-void gpio_setAlternateFunction(port_t p, uint8_t pin); 
+void gpio_setAlternateFunction(port_t p, uint8_t pin, uint8_t alternate_mode); 
 
 #endif
