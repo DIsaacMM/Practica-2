@@ -50,7 +50,7 @@ typedef enum pwm_channel
  * 
  * @return No return value
  */
-void pwm_init();
+void pwm_init(port_t p, tim_t t, uint8_t pin);
 
 /**
  * @brief Configures the PWM signal parameters
@@ -64,7 +64,7 @@ void pwm_init();
  * @return No return value
  */
 
-void pwm_setSignal();
+void pwm_setSignal(tim_t t, channel_t chann, uint32_t frecuency);
 
 /**
  * @brief Starts PWM signal generation
@@ -77,7 +77,7 @@ void pwm_setSignal();
  * 
  * @return No return value
  */
-void pwm_start();
+void pwm_start(tim_t t, channel_t chann);
 
 /**
  * @brief Stops PWM signal generation
@@ -91,6 +91,6 @@ void pwm_start();
  * @return No return value
  */
 
-void pwm_stop();
+void pwm_stop(tim_t t, channel_t chann);
 
 #endif

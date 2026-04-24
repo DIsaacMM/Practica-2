@@ -32,7 +32,7 @@ void timer_init(tim_t t)
     tim_init(); 
     
     // Configure timer for the desired delay
-    tim_initTimer(TIM[t]); 
+    tim_initTimer(t); 
 }
 
 /**
@@ -56,10 +56,10 @@ void timer_init(tim_t t)
  */
 void timer_delay_ms(tim_t t, uint16_t delay_ms)
 {
-    tim_setTimerMs(TIM[t], delay_ms); 
+    tim_setTimerMs(t, delay_ms); 
     
     // Enable timer and wait for it to complete
-    tim_enableTimer(TIM[t]);
-    tim_waitTimer(TIM[t]);
-    tim_disableTimer(TIM[t]);
+    tim_enableTimer(t);
+    tim_waitTimer(t);
+    tim_disableTimer(t);
 }

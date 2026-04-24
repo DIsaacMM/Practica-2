@@ -31,7 +31,7 @@
  * @return No return value
  */
 
-void timer_init();
+void timer_init(tim_t t);
 
 /**
  * @brief Generates a blocking delay in milliseconds
@@ -49,6 +49,6 @@ void timer_init();
  *       which is more accurate than software loops
  */
 
-void timer_delay_ms();
+void timer_delay_ms(tim_t t, uint16_t delay_ms);
 
 #endif
